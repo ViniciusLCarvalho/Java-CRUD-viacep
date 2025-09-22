@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang='pt-br' xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta charset="utf-8" />
+	<title>cepBuscar</title>
+</h:head>
+<body>
+	<h3>Cadastro de Endereços</h3>
+	<h:form>
+		<h:panelGrid columns="2">
+			<h:outputLabel value="CEP" for="cep" />
+			<h:inputText value="#{enderecoBean.endereco.cep}" id="cep">
+				<f:ajax event="change"
+					render="logradouro complemento bairro localidade uf"
+					listener="#{enderecoBean.pesquisaCep}" />
+			</h:inputText>
+
+			<h:outputLabel value="Logradouro" for="logradouro" />
+			<h:inputText value="#{enderecoBean.endereco.logradouro}"
+				id="logradouro" />
+
+			<h:outputLabel value="Complemento" for="complemento" />
+			<h:inputText value="#{enderecoBean.endereco.complemento}"
+				id="complemento" />
+
+			<h:outputLabel value="Bairro" for="bairro" />
+			<h:inputText value="#{enderecoBean.endereco.bairro}" id="bairro" />
+
+			<h:outputLabel value="Localidade" for="localidade" />
+			<h:inputText value="#{enderecoBean.endereco.localidade}"
+				id="localidade" />
+
+			<h:outputLabel value="UF" for="uf" />
+			<h:inputText value="#{enderecoBean.endereco.uf}" id="uf" />
+		</h:panelGrid>
+		<br />
+		<h:panelGrid columns="4">
+			<h:commandButton value="Salvar" action="#{enderecoBean.adicionar()}"
+				update="@form" />
+		</h:panelGrid>
+		<br />
+		<h:dataTable value="#{enderecoBean.enderecos}" var="e">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="CEP"/>
+				</f:facet>
+				<h:outputLabel value="#{e.cep}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Logradouro" />
+				</f:facet>
+				<h:outputLabel value="#{e.logradouro}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Complemento" />
+				</f:facet>
+				<h:outputLabel value="#{e.complemento}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Bairro" />
+				</f:facet>
+				<h:outputLabel value="#{e.bairro}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Localidade" />
+				</f:facet>
+				<h:outputLabel value="#{e.localidade}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="UF" />
+				</f:facet>
+				<h:outputLabel value="#{e.uf}" />
+			</h:column>
+
+			<h:column>
+				<h:commandButton value="Editar" action="altera.xhtml">
+					<f:setPropertyActionListener target="#{enderecoBean.endereco}"
+						value="#{e}" />
+				</h:commandButton>
+			</h:column>
+		</h:dataTable>
+	</h:form>
+</body>
+</html>

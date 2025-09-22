@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang='pt-br' xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+	<meta charset="utf-8" />
+	<title>cepBuscar</title>
+</head>
+<body>
+	<h3>Edição</h3>
+	<h:form>
+		<h:panelGrid columns="2">
+			
+			<h:outputLabel value="CEP" for="cep" />
+			<h:inputText value="#{enderecoBean.endereco.cep}" id="cep"/>
+			
+			<h:outputLabel value="Logradouro" for="logradouro"/>
+			<h:inputText value="#{enderecoBean.endereco.logradouro}" id="logradouro"/>
+			
+			<h:outputLabel value="Complemento" for="complemento"/>
+			<h:inputText value="#{enderecoBean.endereco.complemento}" id="complemento"/>
+			
+			<h:outputLabel value="Bairro" for="bairro"/>
+			<h:inputText value="#{enderecoBean.endereco.bairro}" id="bairro"/>
+			
+			<h:outputLabel value="Localidade" for="localidade"/>
+			<h:inputText value="#{enderecoBean.endereco.localidade}" id="localidade"/>
+			
+			<h:outputLabel value="UF" for="uf"/>
+			<h:inputText value="#{enderecoBean.endereco.uf}" id="uf"/>
+			<h:inputHidden value="#{enderecoBean.endereco.id}"/>
+		</h:panelGrid>
+		<br/>
+		<h:panelGrid columns="3">
+			<h:commandButton value="Alterar" action="#{enderecoBean.alterar()}"/>
+			<h:commandButton value="Excluir" action="#{enderecoBean.excluir()}"/>
+			<h:commandButton value="Voltar" action="index.xhtml"/>
+			
+		</h:panelGrid>
+	</h:form>
+</body>
+</html>
